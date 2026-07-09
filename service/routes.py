@@ -10,18 +10,12 @@ from service.common import status  # HTTP Status Codes
 from . import app  # Import Flask application
 
 
-############################################################
-# Health Endpoint
-############################################################
 @app.route("/health")
 def health():
     """Health Status"""
     return jsonify(dict(status="OK")), status.HTTP_200_OK
 
 
-######################################################################
-# GET INDEX
-######################################################################
 @app.route("/")
 def index():
     """Root URL response"""
@@ -34,9 +28,6 @@ def index():
     )
 
 
-######################################################################
-# CREATE A NEW ACCOUNT
-######################################################################
 @app.route("/accounts", methods=["POST"])
 def create_accounts():
     """
@@ -55,9 +46,7 @@ def create_accounts():
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
 
-######################################################################
-# LIST ALL ACCOUNTS
-######################################################################
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     """Lists all accounts"""
@@ -65,9 +54,7 @@ def list_accounts():
     accounts = Account.all()
     return jsonify([a.serialize() for a in accounts]), status.HTTP_200_OK
 
-######################################################################
-# READ AN ACCOUNT
-######################################################################
+
 @app.route("/accounts/<int:account_id>", methods=["GET"])
 def get_accounts(account_id):
     """Reads a single Account based on ID"""
@@ -77,9 +64,7 @@ def get_accounts(account_id):
         abort(status.HTTP_404_NOT_FOUND, f"Account {account_id} not found")
     return jsonify(account.serialize()), status.HTTP_200_OK
 
-######################################################################
-# UPDATE AN EXISTING ACCOUNT
-######################################################################
+
 @app.route("/accounts/<int:account_id>", methods=["PUT"])
 def update_accounts(account_id):
     """Updates an existing Account"""
@@ -91,9 +76,7 @@ def update_accounts(account_id):
     account.update()
     return jsonify(account.serialize()), status.HTTP_200_OK
 
-######################################################################
-# DELETE AN ACCOUNT
-######################################################################
+
 @app.route("/accounts/<int:account_id>", methods=["DELETE"])
 def delete_accounts(account_id):
     """Deletes an Account"""
@@ -103,9 +86,7 @@ def delete_accounts(account_id):
         account.delete()
     return "", status.HTTP_204_NO_CONTENT
 
-######################################################################
-#  U T I L I T Y   F U N C T I O N S
-######################################################################
+
 def check_content_type(media_type):
     """Checks that the media type is correct"""
     content_type = request.headers.get("Content-Type")
