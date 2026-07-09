@@ -1,0 +1,20 @@
+[clone : clone] + [ false = true ]
+[clone : clone] + [ false = true ]
+[clone : clone] + [ false = true ]
+[clone : clone] + CHECKOUT_DIR=/workspace/output/
+[clone : clone] + [ true = true ]
+[clone : clone] + cleandir
+[clone : clone] + [ -d /workspace/output/ ]
+[clone : clone] + rm -rf /workspace/output//*
+[clone : clone] + rm -rf /workspace/output//.[!.]*
+[clone : clone] + rm -rf /workspace/output//..?*
+[clone : clone] + test -z 
+[clone : clone] + test -z 
+[clone : clone] + test -z 
+[clone : clone] + git config --global --add safe.directory /workspace/output
+[clone : clone] + /ko-app/git-init -url=https://github.com/enterstrainmention/devops-capstone-project.git -revision=cd-pipeline -refspec= -path=/workspace/output/ -sslVerify=true -submodules=true -depth=1 -sparseCheckoutDirectories=
+[clone : clone] {"level":"error","ts":1783566378.0267763,"caller":"git/git.go:53","msg":"Error running git [remote get-url origin]: exit status 2\nerror: No such remote 'origin'\n","stacktrace":"github.com/tektoncd-catalog/git-clone/git-init/git.run\n\tgithub.com/tektoncd-catalog/git-clone/git-init/git/git.go:53\ngithub.com/tektoncd-catalog/git-clone/git-init/git.Fetch\n\tgithub.com/tektoncd-catalog/git-clone/git-init/git/git.go:109\nmain.main\n\tgithub.com/tektoncd-catalog/git-clone/git-init/main.go:52\nruntime.main\n\truntime/proc.go:272"}
+[clone : clone] {"level":"error","ts":1783566378.9705358,"caller":"git/git.go:53","msg":"Error running git [config core.sshCommand ssh -o StrictHostKeyChecking=accept-new]: exit status 128\nfatal: not in a git directory\n","stacktrace":"github.com/tektoncd-catalog/git-clone/git-init/git.run\n\tgithub.com/tektoncd-catalog/git-clone/git-init/git/git.go:53\ngithub.com/tektoncd-catalog/git-clone/git-init/git.Fetch\n\tgithub.com/tektoncd-catalog/git-clone/git-init/git/git.go:128\nmain.main\n\tgithub.com/tektoncd-catalog/git-clone/git-init/main.go:52\nruntime.main\n\truntime/proc.go:272"}
+[clone : clone] {"level":"warn","ts":1783566378.9705913,"caller":"git/git.go:130","msg":"error disabling strict host key checking: exit status 128"}
+[clone : clone] {"level":"fatal","ts":1783566378.9706137,"caller":"git-init/main.go:53","msg":"Error fetching git repository: error disabling strict host key checking: exit status 128","stacktrace":"main.main\n\tgithub.com/tektoncd-catalog/git-clone/git-init/main.go:53\nruntime.main\n\truntime/proc.go:272"}
+
